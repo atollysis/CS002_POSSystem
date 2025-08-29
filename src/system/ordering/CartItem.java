@@ -1,7 +1,7 @@
-package src.system.ordering;
+package system.ordering;
 
-import src.system.menu.ItemSize;
-import src.system.menu.MenuItem;
+import system.menu.ItemSize;
+import system.menu.MenuItem;
 
 public class CartItem {
 	/*

@@ -3,8 +3,8 @@ package io.csv.converters;
 import java.util.Arrays;
 
 import io.csv.CSVConverter;
-import src.system.menu.ItemSize;
-import src.system.ordering.CartDetails;
+import system.menu.ItemSize;
+import system.ordering.CartDetails;
 
 public class CartItemCSVConverter implements CSVConverter<CartDetails> {
 

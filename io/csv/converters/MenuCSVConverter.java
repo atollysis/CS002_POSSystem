@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.csv.CSVConverter;
-import src.system.menu.ItemSize;
-import src.system.menu.ItemType;
-import src.system.menu.MenuItem;
+import system.menu.ItemSize;
+import system.menu.ItemType;
+import system.menu.MenuItem;
 
 public class MenuCSVConverter implements CSVConverter<MenuItem> {
 

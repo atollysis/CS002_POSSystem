@@ -1,10 +1,10 @@
-package src.system.transactions;
+package system.transactions;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.system.ordering.CartItem;
+import system.ordering.CartItem;
 
 public class Transaction {
 	/*

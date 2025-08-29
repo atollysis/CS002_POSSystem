@@ -2,7 +2,7 @@ package io.csv.converters;
 
 import java.util.Arrays;
 import io.csv.CSVConverter;
-import src.system.accounts.Account;
+import system.accounts.Account;
 
 public class AccountCSVConverter implements CSVConverter<Account> {
 

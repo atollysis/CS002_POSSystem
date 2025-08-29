@@ -1,4 +1,4 @@
-package src.system.accounts;
+package system.accounts;
 
 public enum AccountOpResult {
 	INVALID_PIN_FORMAT,

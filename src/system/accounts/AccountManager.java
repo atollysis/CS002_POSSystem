@@ -1,4 +1,4 @@
-package src.system.accounts;
+package system.accounts;
 
 import java.io.IOException;
 import java.util.List;

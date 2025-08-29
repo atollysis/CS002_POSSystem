@@ -1,4 +1,4 @@
-package src.system.menu;
+package system.menu;
 
 public enum MenuOpResult {
 	SUCCESS,

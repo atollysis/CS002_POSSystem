@@ -1,4 +1,4 @@
-package src.system.menu;
+package system.menu;
 
 import java.io.IOException;
 import java.util.List;

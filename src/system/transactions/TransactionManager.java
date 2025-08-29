@@ -1,4 +1,4 @@
-package src.system.transactions;
+package system.transactions;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -8,10 +8,10 @@ import io.csv.CSVConverter;
 import io.csv.CSVManager;
 import io.csv.converters.TransactionCSVConverter;
 import io.csv.converters.CartItemCSVConverter;
-import src.system.menu.MenuItem;
-import src.system.menu.MenuManager;
-import src.system.ordering.CartDetails;
-import src.system.ordering.CartItem;
+import system.menu.MenuItem;
+import system.menu.MenuManager;
+import system.ordering.CartDetails;
+import system.ordering.CartItem;
 
 public class TransactionManager {
 	/*

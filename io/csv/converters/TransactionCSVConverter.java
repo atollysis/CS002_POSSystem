@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import io.csv.CSVConverter;
-import src.system.transactions.DineType;
-import src.system.transactions.PaymentType;
-import src.system.transactions.Transaction;
+import system.transactions.DineType;
+import system.transactions.PaymentType;
+import system.transactions.Transaction;
 
 public class TransactionCSVConverter implements CSVConverter<Transaction> {
 

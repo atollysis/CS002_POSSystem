@@ -1,4 +1,4 @@
-package src.system.menu;
+package system.menu;
 
 import java.util.Map;
 

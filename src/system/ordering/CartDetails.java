@@ -2,11 +2,11 @@
  * Wrapper POJO class for consolidating the junction table.
  */
 
-package src.system.ordering;
+package system.ordering;
 
 import java.util.Objects;
 
-import src.system.menu.ItemSize;
+import system.menu.ItemSize;
 
 public class CartDetails {
 	/*
