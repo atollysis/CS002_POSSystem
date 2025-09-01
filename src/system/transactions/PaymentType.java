@@ -17,4 +17,12 @@ public enum PaymentType {
 		}
 		return null;
 	}
+	
+	public boolean isNotNullAndCash() {
+		return this != null && this != CASH;
+	}
+	
+	public String toName() {
+		return this.toString().charAt(0) + this.toString().substring(1).toLowerCase();
+	}
 }

@@ -1,5 +1,7 @@
 package system.ordering;
 
+import java.util.Objects;
+
 import system.menu.ItemSize;
 import system.menu.MenuItem;
 
@@ -15,6 +17,14 @@ public class CartItem {
 	/*
 	 * CONSTRUCTOR
 	 */
+	public CartItem() {
+		// These are all default values but it's good to be sure lol
+		this.item = null;
+		this.size = null;
+		this.price = 0;
+		this.quantity = 0;
+	}
+	
 	public CartItem(
 			MenuItem item,
 			CartDetails details) {
@@ -71,5 +81,26 @@ public class CartItem {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(item, price, quantity, size);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		
+		CartItem other = (CartItem) obj;
+		return Objects.equals(item, other.item)
+				&& price == other.price
+				&& quantity == other.quantity
+				&& size == other.size;
 	}
 }

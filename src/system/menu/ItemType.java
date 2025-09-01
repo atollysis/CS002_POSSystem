@@ -13,4 +13,9 @@ public enum ItemType {
 		}
 		throw new IllegalArgumentException("Item type cannot be converted: " + str);
 	}
+	
+	@Override
+	public String toString() {
+		return this.name().toLowerCase();
+	}
 }

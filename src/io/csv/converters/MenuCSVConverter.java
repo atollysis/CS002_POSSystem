@@ -37,8 +37,8 @@ public class MenuCSVConverter implements CSVConverter<MenuItem> {
 	}
 	
 	private String getPriceString(MenuItem item, ItemSize size) {
-		int price = item.getSizePriceRange().getOrDefault(size, 0);
-		return (price <= 0) ? "" : Integer.toString(price);
+		Integer price = item.getSizePriceRange().get(size);
+		return (price == null || price <= 0) ? "" : Integer.toString(price);
 	}
 
 	@Override
@@ -47,14 +47,26 @@ public class MenuCSVConverter implements CSVConverter<MenuItem> {
 				.map(String::trim) // mostly to remove the '\n'
 				.toArray(String[]::new);
 		Map<ItemSize, Integer> sizePriceRange = new HashMap<>();
-		sizePriceRange.put(ItemSize.REGULAR,	Integer.parseInt(fields[3]));
-		sizePriceRange.put(ItemSize.MEDIUM,		Integer.parseInt(fields[4]));
-		sizePriceRange.put(ItemSize.LARGE,		Integer.parseInt(fields[5]));
+		sizePriceRange.put(ItemSize.REGULAR,	parsePrice(fields[3]));
+		sizePriceRange.put(ItemSize.MEDIUM,		parsePrice(fields[4]));
+		sizePriceRange.put(ItemSize.LARGE,		parsePrice(fields[5]));
 		return new MenuItem(
 				Integer.parseInt(fields[0]),	// ID
 				fields[1],						// name
 				ItemType.convert(fields[2]),	// type
 				sizePriceRange);				// size price range
+	}
+	
+	private Integer parsePrice(String price) {
+		int output;
+		try {
+			output = Integer.parseInt(price);
+		} catch (NumberFormatException e) {
+			return null;
+		}
+		if (output <= 0)
+			return null;
+		return output;
 	}
 
 }

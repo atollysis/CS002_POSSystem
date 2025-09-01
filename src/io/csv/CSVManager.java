@@ -12,7 +12,7 @@ public class CSVManager {
 	/*
 	 * ATTRIBUTES
 	 */
-	private static final Path DATA_DIR = Paths.get("data");
+	private static final Path DATA_DIR = Paths.get("data/csvs");
 	
 	/*
 	 * SUPPORT METHODS

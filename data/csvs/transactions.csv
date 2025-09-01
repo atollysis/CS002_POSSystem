@@ -1,0 +1,3 @@
+id,timestamp,accountId,paymentType,dineType,totalPrice,payment,change,referenceNumber
+0,2025-09-01T13:11:08.688292,1,card,dine_in,150,150,0,34534
+

@@ -21,7 +21,8 @@ public class TransactionCSVConverter implements CSVConverter<Transaction> {
 				"dineType",
 				"totalPrice",
 				"payment",
-				"change")
+				"change",
+				"referenceNumber")
 				+ '\n';
 	}
 
@@ -35,7 +36,8 @@ public class TransactionCSVConverter implements CSVConverter<Transaction> {
 				obj.getDineType().toString(),
 				Integer.toString(obj.getTotalPrice()),
 				Integer.toString(obj.getPayment()),
-				Integer.toString(obj.getChange()))
+				Integer.toString(obj.getChange()),
+				obj.getReferenceNumber() == null ? "" : obj.getReferenceNumber())
 				+ '\n';
 	}
 
@@ -53,7 +55,8 @@ public class TransactionCSVConverter implements CSVConverter<Transaction> {
 				DineType.convert(fields[4]),
 				Integer.parseInt(fields[5]),
 				Integer.parseInt(fields[6]),
-				Integer.parseInt(fields[7]));
+				Integer.parseInt(fields[7]),
+				fields[8]);
 	}
 
 }

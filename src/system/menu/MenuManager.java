@@ -1,9 +1,14 @@
 package system.menu;
 
+import java.awt.Image;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import javax.swing.ImageIcon;
+
 import io.csv.CSVConverter;
 import io.csv.CSVManager;
 import io.csv.converters.MenuCSVConverter;
@@ -14,8 +19,10 @@ public class MenuManager {
 	 */
 	private static final Set<Character> INVALID_CHARS = Set.of('"', ',');
 	private static final String CSV_FILENAME = "items.csv";
+	private static final int IMG_DIMS = 100;
 	
 	private static CSVConverter<MenuItem> converter = new MenuCSVConverter();
+	private static Map<MenuItem, Image> itemImgs;
 	private static List<MenuItem> items;
 	
 	/*
@@ -23,6 +30,7 @@ public class MenuManager {
 	 */
 	static {
 		loadCSV();
+		loadImages();
 	}
 	
 	/*
@@ -41,6 +49,18 @@ public class MenuManager {
 			items = CSVManager.loadAll(CSV_FILENAME, converter);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private static void loadImages() {
+		itemImgs = new HashMap<>();
+		for (MenuItem item : items) {
+			ImageIcon i = new ImageIcon(String.format(
+					"data/images/menu/%s/%s.jpg",
+					item.getItemType().toString(),
+					item.getName().toLowerCase().replaceAll(" ", "")));
+			Image resized = i.getImage().getScaledInstance(IMG_DIMS, IMG_DIMS, Image.SCALE_SMOOTH);
+			itemImgs.put(item, resized);
 		}
 	}
 	
@@ -73,21 +93,27 @@ public class MenuManager {
 	 * SERVICE METHODS
 	 */
 	public static MenuItem findItemById(int id) {
-		/*
-		 * TODO: Iterate over this.items and return
-		 * the current menu item if the IDs match.
-		 * If no match, return null.
-		 */
+		for (MenuItem item : items) {
+			if (item.getId() == id)
+				return item;
+		}
 		return null;
 	}
 	
 	public static MenuItem findItemByName(String name) {
-		/*
-		 * TODO: Iterate over this.items and return
-		 * the current menu item if the names match.
-		 * If no match, return null.
-		 */
+		for (MenuItem item : items) {
+			if (item.getName().equalsIgnoreCase(name))
+				return item;
+		}
 		return null;
+	}
+	
+	public static Image getItemImage(MenuItem item) {
+		return itemImgs.get(item);
+	}
+	
+	public static List<MenuItem> getAllItems() {
+		return items;
 	}
 	
 	public static MenuOpResult addNewItem(
@@ -99,12 +125,12 @@ public class MenuManager {
 		// Guard clauses
 		if (!isValidName(name))
 			return MenuOpResult.INVALID_NAME;
-		/*
-		 * TODO:
-		 * Make similar guard clauses for invalid prices
-		 * (use isValidPrice() above)
-		 * See MenuOpResult for the appropriate return values.
-		 */
+		if (!isValidPrice(priceReg))
+			return MenuOpResult.INVALID_PRICE_R;
+		if (!isValidPrice(priceMed))
+			return MenuOpResult.INVALID_PRICE_M;
+		if (!isValidPrice(priceLrg))
+			return MenuOpResult.INVALID_PRICE_L;
 		
 		Map<ItemSize, Integer> sizePriceRange = Map.ofEntries(
 				Map.entry(ItemSize.REGULAR, Integer.parseInt(priceReg)),

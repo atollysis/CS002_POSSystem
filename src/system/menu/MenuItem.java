@@ -1,6 +1,7 @@
 package system.menu;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class MenuItem {
 	/*
@@ -62,5 +63,23 @@ public class MenuItem {
 
 	public void setSizePriceRange(Map<ItemSize, Integer> sizePriceRange) {
 		this.sizePriceRange = sizePriceRange;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		
+		MenuItem other = (MenuItem) obj;
+		return id == other.id;
 	}
 }

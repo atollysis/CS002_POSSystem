@@ -20,6 +20,7 @@ public class Transaction {
 	private int totalPrice;
 	private int payment;
 	private int change;
+	private String referenceNumber;
 	
 	/*
 	 * CONSTRUCTORS
@@ -34,6 +35,7 @@ public class Transaction {
 		this.totalPrice = 0;
 		this.payment = 0;
 		this.change = 0;
+		this.referenceNumber = null;
 	}
 	
 	public Transaction(
@@ -45,7 +47,8 @@ public class Transaction {
 			DineType dineType,
 			int totalPrice,
 			int payment,
-			int change) {
+			int change,
+			String referenceNumber) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.employeeID = employeeId;
@@ -55,6 +58,7 @@ public class Transaction {
 		this.totalPrice = totalPrice;
 		this.payment = payment;
 		this.change = change;
+		this.referenceNumber = referenceNumber;
 	}
 	
 	/*
@@ -95,6 +99,10 @@ public class Transaction {
 	public int getChange() {
 		return change;
 	}
+	
+	public String getReferenceNumber() {
+		return referenceNumber;
+	}
 
 	/*
 	 * SETTERS
@@ -129,6 +137,10 @@ public class Transaction {
 	
 	public void setChange(int change) {
 		this.change = change;
+	}
+	
+	public void setReferenceNumber(String referenceNumber) {
+		this.referenceNumber = referenceNumber;
 	}
 	
 }

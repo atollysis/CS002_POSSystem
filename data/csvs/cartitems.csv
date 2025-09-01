@@ -1,0 +1,6 @@
+transactionID,itemID,itemSize,itemPrice,itemQuantity,subtotal
+0,4,large,180,2,180
+0,13,medium,35,1,35
+0,19,medium,40,1,40
+0,1,medium,70,1,70
+0,5,medium,80,1,80

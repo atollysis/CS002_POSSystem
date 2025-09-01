@@ -2,6 +2,7 @@ package system.accounts;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import io.csv.CSVConverter;
@@ -14,7 +15,7 @@ public class AccountManager {
 	 */
 	private static final int PIN_MIN_LENGTH = 4;
 	private static final String CSV_FILENAME = "accounts.csv";
-	private static final Set<Character> INVALID_CHARS = Set.of('"', ',');
+	private static final Set<Character> INVALID_CHARS = Set.of('"', ',', ';');
 	
 	private CSVConverter<Account> converter;
 	private List<Account> accounts;
@@ -86,6 +87,14 @@ public class AccountManager {
 	/*
 	 * SERVICE METHODS
 	 */
+	public String getAccountName(int id) {
+		List<String> result = this.accounts.stream()
+				.filter(acc -> acc.getID() == id)
+				.map   (Account::getName)
+				.toList();
+		return (result.size() == 1) ? result.get(0) : null;
+	}
+	
 	public AccountOpResult login(String accountName, String pin) {
 		if (accountName == null)
 			throw new NullPointerException("Account name is null.");
